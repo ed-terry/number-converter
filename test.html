@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <h1>Testing Fractional Conversion</h1>
+    <div id="output"></div>
+    
+    <script>
+        // Test the conversion
+        function getDigitValue(digit) {
+            if (digit >= '0' && digit <= '9') {
+                return parseInt(digit);
+            }
+            return digit.charCodeAt(0) - 'A'.charCodeAt(0) + 10;
+        }
+        
+        function getDigitChar(value) {
+            if (value < 10) {
+                return value.toString();
+            }
+            return String.fromCharCode('A'.charCodeAt(0) + value - 10);
+        }
+        
+        function convertToDecimal(number, base) {
+            number = number.replace(',', '.');
+            const parts = number.split('.');
+            const integerPart = parts[0] || '0';
+            const fractionalPart = parts[1] || '';
+            
+            let decimalValue = 0;
+            
+            // Integer part
+            const integerDigits = integerPart.split('');
+            const intLength = integerDigits.length;
+            
+            for (let i = 0; i < intLength; i++) {
+                const digit = integerDigits[i];
+                const digitValue = getDigitValue(digit);
+                const position = intLength - 1 - i;
+                const positionValue = digitValue * Math.pow(base, position);
+                decimalValue += positionValue;
+                console.log(`${digit} (value ${digitValue}) at position ${position}: ${positionValue}`);
+            }
+            
+            // Fractional part
+            if (fractionalPart) {
+                const fracDigits = fractionalPart.split('');
+                for (let i = 0; i < fracDigits.length; i++) {
+                    const digit = fracDigits[i];
+                    const digitValue = getDigitValue(digit);
+                    const position = -(i + 1);
+                    const positionValue = digitValue * Math.pow(base, position);
+                    decimalValue += positionValue;
+                    console.log(`${digit} (value ${digitValue}) at position ${position}: ${positionValue}`);
+                }
+            }
+            
+            return decimalValue;
+        }
+        
+        function convertFromDecimal(decimal, base) {
+            const integerPart = Math.floor(Math.abs(decimal));
+            const fractionalPart = Math.abs(decimal) - integerPart;
+            
+            // Integer part
+            let quotient = integerPart;
+            let intResult = '';
+            
+            if (quotient === 0) {
+                intResult = '0';
+            } else {
+                while (quotient > 0) {
+                    const remainder = quotient % base;
+                    intResult = getDigitChar(remainder) + intResult;
+                    quotient = Math.floor(quotient / base);
+                }
+            }
+            
+            // Fractional part
+            let fracResult = '';
+            let fraction = fractionalPart;
+            const maxIterations = 10;
+            let iteration = 0;
+            
+            if (fraction > 0.0000001) {
+                while (fraction > 0.0000001 && iteration < maxIterations) {
+                    const product = fraction * base;
+                    const digit = Math.floor(product);
+                    fracResult += getDigitChar(digit);
+                    fraction = product - digit;
+                    iteration++;
+                    console.log(`Iteration ${iteration}: ${fraction} * ${base} = ${product}, digit = ${digit}`);
+                }
+            }
+            
+            return intResult + (fracResult ? '.' + fracResult : '');
+        }
+        
+        // Run tests
+        const output = document.getElementById('output');
+        
+        console.log('Test 1: 10.5 (decimal) to binary');
+        let result1 = convertFromDecimal(10.5, 2);
+        output.innerHTML += `<p>10.5 (dec) to binary: ${result1}</p>`;
+        
+        console.log('Test 2: 1010.1 (binary) to decimal');
+        let result2 = convertToDecimal('1010.1', 2);
+        output.innerHTML += `<p>1010.1 (bin) to decimal: ${result2}</p>`;
+        
+        console.log('Test 3: Convert back');
+        let result3 = convertFromDecimal(result2, 2);
+        output.innerHTML += `<p>${result2} (dec) to binary: ${result3}</p>`;
+        
+        console.log('Test 4: FF.8 (hex) to decimal');
+        let result4 = convertToDecimal('FF.8', 16);
+        output.innerHTML += `<p>FF.8 (hex) to decimal: ${result4}</p>`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    Number Base Converter
+    Created by: Edward Terry
+    Email: sir_edward@icloud.com
+    Made with ❤️
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Edward Terry">
+    <meta name="description" content="Beautiful number base converter with step-by-step visualization for learning">
+    <title>Number Base Converter - Visual Learning</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔢 Number Base Converter</h1>
+            <p class="subtitle">Learn how numbers convert between different bases with step-by-step visualization</p>
+        </header>
+
+        <div class="converter-section">
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="inputNumber">Enter Number</label>
+                    <input type="text" id="inputNumber" placeholder="e.g., 42, 1A.3F, 101.101" autocomplete="off">
+                </div>
+                
+                <div class="base-selector">
+                    <label for="fromBase">From Base</label>
+                    <select id="fromBase">
+                        <option value="2">Binary (2)</option>
+                        <option value="8">Octal (8)</option>
+                        <option value="10" selected>Decimal (10)</option>
+                        <option value="16">Hexadecimal (16)</option>
+                        <option value="custom">Custom...</option>
+                    </select>
+                    <input type="number" id="customFromBase" class="custom-base-input" placeholder="2-36" min="2" max="36" style="display: none;">
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="base-selector">
+                    <label for="toBase">To Base</label>
+                    <select id="toBase">
+                        <option value="2" selected>Binary (2)</option>
+                        <option value="8">Octal (8)</option>
+                        <option value="10">Decimal (10)</option>
+                        <option value="16">Hexadecimal (16)</option>
+                        <option value="custom">Custom...</option>
+                    </select>
+                    <input type="number" id="customToBase" class="custom-base-input" placeholder="2-36" min="2" max="36" style="display: none;">
+                </div>
+            </div>
+
+            <button id="convertBtn" class="convert-btn">Convert & Show Steps</button>
+
+            <div id="result" class="result-section" style="display: none;">
+                <div class="result-display">
+                    <span class="result-label">Result:</span>
+                    <span id="resultValue" class="result-value"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="stepsSection" class="steps-section" style="display: none;">
+            <h2>📚 Conversion Steps</h2>
+            <div id="stepsContainer"></div>
+        </div>
+
+        <footer class="footer">
+            <p class="creator">Created by <strong>Edward Terry</strong></p>
+            <p class="motto">Made with <span class="heart">❤️</span></p>
+            <p class="contact">
+                <a href="mailto:sir_edward@icloud.com">sir_edward@icloud.com</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
