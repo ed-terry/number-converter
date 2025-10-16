@@ -2,9 +2,9 @@
 
 A beautiful, interactive number base converter that shows step-by-step conversion process for visual learning.
 
-**Created by:** Edward Terry  
+
 **Email:** sir_edward@icloud.com  
-**Made with ❤️**
+**Made with ❤️ By Edward Terry**
 
 ## Features
 
