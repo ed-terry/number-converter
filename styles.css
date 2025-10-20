@@ -33,6 +33,57 @@ body {
     min-height: 100vh;
     padding: 2rem 1rem;
     color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode {
+    --card-bg: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --border-color: #374151;
+    --bg-gradient: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+body.dark-mode .converter-section,
+body.dark-mode .steps-section,
+body.dark-mode .example-section {
+    background: #1f2937;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .step {
+    background: linear-gradient(135deg, #374151 0%, #2d3748 100%);
+}
+
+body.dark-mode input,
+body.dark-mode select {
+    background: #374151;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.dark-mode .step-formula,
+body.dark-mode .result-explanation {
+    background: #374151;
+}
+
+body.dark-mode .quick-info-section {
+    background: linear-gradient(135deg, #374151 0%, #2d3748 100%);
+    border-left-color: #f59e0b;
+}
+
+body.dark-mode .quick-info-section h3,
+body.dark-mode .quick-info-section p {
+    color: #f9fafb;
+}
+
+body.dark-mode .base-info {
+    background: #374151;
+}
+
+body.dark-mode .division-table th,
+body.dark-mode .multiplication-table th {
+    background: #2d3748;
 }
 
 .container {
@@ -113,6 +164,48 @@ select:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.input-helper {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.input-helper.info {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.input-helper.success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.input-helper.warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.input-helper.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.base-info {
+    margin-top: 0.5rem;
+    padding: 0.4rem;
+    background: #f3f4f6;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    animation: fadeIn 0.3s ease;
+}
+
+.base-info small {
+    font-family: 'Courier New', monospace;
 }
 
 .custom-base-input {
@@ -198,6 +291,78 @@ select:focus {
     font-family: 'Courier New', monospace;
 }
 
+.copy-btn {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.result-explanation {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.result-explanation p {
+    margin: 0.5rem 0;
+}
+
+.result-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.quick-info-section {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #f59e0b;
+    animation: fadeIn 0.5s ease;
+}
+
+.quick-info-section h3 {
+    color: #92400e;
+    margin-bottom: 1rem;
+}
+
+.quick-info-section p {
+    margin: 0.5rem 0;
+    color: #78350f;
+    line-height: 1.6;
+}
+
+.quick-info-section code {
+    background: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.quick-info-section ol {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.quick-info-section li {
+    margin: 0.5rem 0;
+}
+
 .steps-section {
     background: var(--card-bg);
     padding: 2rem;
@@ -213,6 +378,58 @@ select:focus {
     text-align: center;
 }
 
+.steps-progress {
+    background: #e5e7eb;
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--bg-gradient);
+    width: 0%;
+    transition: width 1s ease;
+}
+
+.steps-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+body.dark-mode .control-btn {
+    background: #374151;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+body.dark-mode .control-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
 #stepsContainer {
     display: flex;
     flex-direction: column;
@@ -225,6 +442,50 @@ select:focus {
     border-radius: 12px;
     border-left: 4px solid var(--primary-color);
     animation: slideIn 0.5s ease;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.step.collapsed .step-body {
+    display: none;
+}
+
+.step.collapsed {
+    padding: 1rem 1.5rem;
+}
+
+.collapse-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.collapse-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.step-body {
+    animation: expandDown 0.3s ease;
+}
+
+@keyframes expandDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 2000px;
+    }
 }
 
 @keyframes slideIn {
@@ -238,16 +499,49 @@ select:focus {
     }
 }
 
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+.step-number {
+    background: transparent;
+    color: var(--primary-color);
+    font-weight: 800;
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+
 .step-title {
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 0.75rem;
     font-size: 1.1rem;
+    flex: 1;
 }
 
 .step-content {
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.step-content strong {
+    color: var(--primary-dark);
+}
+
+.calculation-section {
+    margin: 1rem 0;
+}
+
+.section-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
 }
 
 .step-formula {
@@ -258,6 +552,13 @@ select:focus {
     font-family: 'Courier New', monospace;
     border: 1px solid var(--border-color);
     overflow-x: auto;
+}
+
+.formula-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .step-calculation {
@@ -274,6 +575,51 @@ select:focus {
     border-radius: 8px;
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.calc-number {
+    opacity: 0.8;
+    margin-right: 0.5rem;
+}
+
+.division-table table,
+.multiplication-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+}
+
+.division-table th,
+.multiplication-table th,
+.division-table td,
+.multiplication-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.division-table th,
+.multiplication-table th {
+    background: #f3f4f6;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.division-table .highlight,
+.multiplication-table .highlight {
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.reading-direction {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 .step-result {
@@ -284,6 +630,16 @@ select:focus {
     font-weight: 600;
     display: inline-block;
     margin-top: 0.5rem;
+}
+
+.step-explanation {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 8px;
+    border-left: 3px solid #f59e0b;
+    color: #78350f;
+    line-height: 1.6;
 }
 
 .error {
@@ -354,3 +710,57 @@ select:focus {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
+
+.example-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2rem;
+}
+
+.example-section h3 {
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.example-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.example-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: white;
+}
+
+.example-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.example-title {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.example-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+@media (max-width: 768px) {
+    .example-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+

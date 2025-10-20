@@ -26,6 +26,7 @@
                 <div class="input-field">
                     <label for="inputNumber">Enter Number</label>
                     <input type="text" id="inputNumber" placeholder="e.g., 42, 1A.3F, 101.101" autocomplete="off">
+                    <div id="inputHelper" class="input-helper"></div>
                 </div>
                 
                 <div class="base-selector">
@@ -38,6 +39,7 @@
                         <option value="custom">Custom...</option>
                     </select>
                     <input type="number" id="customFromBase" class="custom-base-input" placeholder="2-36" min="2" max="36" style="display: none;">
+                    <div id="fromBaseInfo" class="base-info"></div>
                 </div>
 
                 <div class="arrow">→</div>
@@ -52,6 +54,7 @@
                         <option value="custom">Custom...</option>
                     </select>
                     <input type="number" id="customToBase" class="custom-base-input" placeholder="2-36" min="2" max="36" style="display: none;">
+                    <div id="toBaseInfo" class="base-info"></div>
                 </div>
             </div>
 
@@ -61,13 +64,50 @@
                 <div class="result-display">
                     <span class="result-label">Result:</span>
                     <span id="resultValue" class="result-value"></span>
+                    <button id="copyBtn" class="copy-btn" title="Copy to clipboard">📋 Copy</button>
                 </div>
+                <div id="resultExplanation" class="result-explanation"></div>
             </div>
         </div>
 
+        <div id="quickInfo" class="quick-info-section" style="display: none;">
+            <h3>💡 Quick Explanation</h3>
+            <div id="quickInfoContent"></div>
+        </div>
+
         <div id="stepsSection" class="steps-section" style="display: none;">
-            <h2>📚 Conversion Steps</h2>
+            <h2>📚 Detailed Conversion Steps</h2>
+            <div class="steps-controls">
+                <button id="expandAllBtn" class="control-btn">➕ Expand All</button>
+                <button id="collapseAllBtn" class="control-btn">➖ Collapse All</button>
+                <button id="darkModeBtn" class="control-btn">🌙 Dark Mode</button>
+            </div>
+            <div class="steps-progress">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
             <div id="stepsContainer"></div>
+        </div>
+
+        <div id="exampleSection" class="example-section">
+            <h3>🎓 Try These Examples:</h3>
+            <div class="example-cards">
+                <div class="example-card" data-number="42" data-from="10" data-to="2">
+                    <div class="example-title">Decimal to Binary</div>
+                    <div class="example-value">42 → ?</div>
+                </div>
+                <div class="example-card" data-number="FF" data-from="16" data-to="10">
+                    <div class="example-title">Hex to Decimal</div>
+                    <div class="example-value">FF → ?</div>
+                </div>
+                <div class="example-card" data-number="10.5" data-from="10" data-to="2">
+                    <div class="example-title">Decimal with Fraction</div>
+                    <div class="example-value">10.5 → Binary</div>
+                </div>
+                <div class="example-card" data-number="1010" data-from="2" data-to="16">
+                    <div class="example-title">Binary to Hex</div>
+                    <div class="example-value">1010 → ?</div>
+                </div>
+            </div>
         </div>
 
         <footer class="footer">
